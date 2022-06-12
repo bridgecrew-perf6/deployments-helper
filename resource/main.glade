@@ -4,6 +4,8 @@
   <requires lib="gtk+" version="3.24"/>
   <object class="GtkWindow">
     <property name="can-focus">False</property>
+    <property name="default-width">800</property>
+    <property name="default-height">600</property>
     <child>
       <object class="GtkFrame">
         <property name="visible">True</property>
@@ -20,7 +22,14 @@
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <child internal-child="selection">
-                  <object class="GtkTreeSelection"/>
+                  <object class="GtkTreeSelection">
+                    <property name="mode">browse</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="repoName">
+                    <property name="title" translatable="yes">Repository</property>
+                  </object>
                 </child>
               </object>
             </child>
@@ -47,11 +56,21 @@
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <child>
-              <object class="GtkButton">
-                <property name="label" translatable="yes">Add Repo</property>
+              <object class="GtkMenuButton" id="menubutton1">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
+                <property name="focus-on-click">False</property>
                 <property name="receives-default">True</property>
+                <property name="relief">half</property>
+                <property name="popover">popover1</property>
+                <child>
+                  <object class="GtkButton">
+                    <property name="label" translatable="yes">Projects</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -71,6 +90,42 @@
                 <property name="fill">True</property>
                 <property name="position">1</property>
               </packing>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkPopover" id="popover1">
+    <property name="can-focus">False</property>
+    <property name="relative-to">menubutton1</property>
+    <child>
+      <object class="GtkListBox">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <child>
+          <object class="GtkListBoxRow" id="project_test">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">projecte 1</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkListBoxRow">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">project_test2</property>
+              </object>
             </child>
           </object>
         </child>
